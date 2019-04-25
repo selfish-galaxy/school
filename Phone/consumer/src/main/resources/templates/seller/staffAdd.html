@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>用户添加页</title>
+    <title>新员工添加页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -63,7 +63,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">添加用户</h1>
+            <h1 class="page-title">添加员工</h1>
         </div>
 
         <div class="container-fluid">
@@ -72,7 +72,7 @@
 
 	
 <div class="well">
-<form id="tab" action="addUser" method="post">
+<form id="tab" action="addStaff" method="post">
 	<div class="btn-toolbar">
     	<button type="submit" class="btn btn-primary"><i class="icon-save">添加</i></button>
   		<div class="btn-group"></div>
@@ -81,23 +81,22 @@
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
 
-
-        <label>用户姓名</label>
-        <input type="text" name="uName" class="input-xlarge">
+        <label>新员工姓名</label>
+        <input type="text" name="stName" class="input-xlarge">
         <label>性别</label>
-        <input type="text" name="uSex" class="input-xlarge">
-        <label>年龄</label>
-        <input type="text" name="uAge" class="input-xlarge">
-        <label>工作</label>
-        <input type="text" name="job" class="input-xlarge">
-        <label>地址</label>
-        <input type="text" name="address" class="input-xlarge">
-        <label>电话</label>
-        <input type="text" name="uTel" class="input-xlarge">
-        <label>买过机型</label>
-        <input type="text" name="buy" class="input-xlarge">
-        <label>备注</label>
-        <input type="text" name="comment" class="input-xlarge">
+        <input type="text" name="stSex" class="input-xlarge">
+        <label>所属部门</label>
+        <input type="text" name="dept" class="input-xlarge">
+        <label>销售数量</label>
+        <input type="text" name="count" class="input-xlarge">
+        <label>基本工资</label>
+        <input type="text" name="basic" class="input-xlarge">
+        <label>奖金</label>
+        <input type="text" name="bonus" class="input-xlarge">
+        <label>总工资</label>
+        <input type="text" name="salary" class="input-xlarge">
+        <label>员工状态</label>
+        <input type="text" name="status" class="input-xlarge">
     
       </div>
       <div class="tab-pane fade" id="profile">

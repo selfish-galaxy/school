@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>用户管理页</title>
+    <title>库存管理页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -49,8 +49,8 @@
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
   
   <script type="text/javascript">
-  function toAddUser(){
-	  window.location.href="toAddUser";
+  function toAddSku(){
+	  window.location.href="toAddSku";
   }
   </script>
   </head>
@@ -65,7 +65,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">用户管理</h1>
+            <h1 class="page-title">库存管理</h1>
         </div>
 
         <div class="container-fluid">
@@ -73,7 +73,7 @@
                 
                
  <div class="btn-toolbar">
-    <button class="btn btn-primary" onclick="javascript:window.location.href='toUserAdd' "><i class="icon-plus"></i>添加</button>
+    <button class="btn btn-primary" onclick="javascript:window.location.href='toSkuAdd' "><i class="icon-plus"></i>添加</button>
   <div class="btn-group">
   </div>
 </div>
@@ -81,30 +81,26 @@
     <table class="table" style="text-align: center;">
       <thead>
         <tr>
-          <th>序号</th>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>年龄</th>
-          <th>工作</th>
-          <th>地址</th>
-          <th>电话</th>
-          <th>买过机型</th>
-          <th>备注</th>
+          <th>库存编号</th>
+          <th>手机id</th>
+          <th>颜色id</th>
+          <th>规格id</th>
+          <th>价格</th>
+          <th>数量</th>
+
           <th style="width: 36px;">操作</th>
         </tr>
       </thead>
       <tbody>
       
-      <tr th:each="u:${users.items }">
-          <td th:text="${u.id }"></td>
+      <tr th:each="s:${skus.items }">
+          <td th:text="${s.skuid }"></td>
           <td th:text="${u.uName }"></td>
           <td th:text="${u.uSex }"></td>
           <td th:text="${u.uAge }"></td>
           <td th:text="${u.job }"></td>
           <td th:text="${u.address }"></td>
-          <td th:text="${u.uTel }"></td>
-          <td th:text="${u.buy }"></td>
-          <td th:text="${u.comment }"></td>
+
           <td>
               <a href="javascript:;" th:id="${u.id}" onclick="javascript:loadUser(this)"><i class="icon-pencil"></i></a>
               <a href="#myModal" role="button" data-toggle="modal">
@@ -121,8 +117,8 @@
                     <!--  class="pagination" -->
 
                     <!--<span th:each="p:${page.pageView }">-->
-  <span th:each="u:${users.pageView }">
-		<span class="page" th:utext="${u }"></span>
+  <span th:each="s:${skus.pageView }">
+		<span class="page" th:utext="${s }"></span>
     </span>
 
  </div>

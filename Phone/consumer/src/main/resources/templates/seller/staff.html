@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>用户管理页</title>
+    <title>员工管理页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -49,8 +49,8 @@
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
   
   <script type="text/javascript">
-  function toAddUser(){
-	  window.location.href="toAddUser";
+  function toAddStaff(){
+	  window.location.href="toAddStaff";
   }
   </script>
   </head>
@@ -73,7 +73,7 @@
                 
                
  <div class="btn-toolbar">
-    <button class="btn btn-primary" onclick="javascript:window.location.href='toUserAdd' "><i class="icon-plus"></i>添加</button>
+    <button class="btn btn-primary" onclick="javascript:window.location.href='toStaffAdd' "><i class="icon-plus"></i>添加</button>
   <div class="btn-group">
   </div>
 </div>
@@ -81,34 +81,34 @@
     <table class="table" style="text-align: center;">
       <thead>
         <tr>
-          <th>序号</th>
+          <th>员工序号</th>
           <th>姓名</th>
           <th>性别</th>
-          <th>年龄</th>
-          <th>工作</th>
-          <th>地址</th>
-          <th>电话</th>
-          <th>买过机型</th>
-          <th>备注</th>
+          <th>所属部门</th>
+          <th>销售数量</th>
+          <th>基本工资</th>
+          <th>奖金</th>
+          <th>总工资</th>
+          <th>员工状态</th>
           <th style="width: 36px;">操作</th>
         </tr>
       </thead>
       <tbody>
       
-      <tr th:each="u:${users.items }">
-          <td th:text="${u.id }"></td>
-          <td th:text="${u.uName }"></td>
-          <td th:text="${u.uSex }"></td>
-          <td th:text="${u.uAge }"></td>
-          <td th:text="${u.job }"></td>
-          <td th:text="${u.address }"></td>
-          <td th:text="${u.uTel }"></td>
-          <td th:text="${u.buy }"></td>
-          <td th:text="${u.comment }"></td>
+      <tr th:each="s:${staffs.items }">
+          <td th:text="${s.id }"></td>
+          <td th:text="${s.stName }"></td>
+          <td th:text="${s.stSex }"></td>
+          <td th:text="${s.dept }"></td>
+          <td th:text="${s.count }"></td>
+          <td th:text="${s.basic }"></td>
+          <td th:text="${s.bonus }"></td>
+          <td th:text="${s.salary }"></td>
+          <td th:text="${s.status }"></td>
           <td>
-              <a href="javascript:;" th:id="${u.id}" onclick="javascript:loadUser(this)"><i class="icon-pencil"></i></a>
+              <a href="javascript:;" th:id="${s.id}" onclick="javascript:loadStaff(this)"><i class="icon-pencil"></i></a>
               <a href="#myModal" role="button" data-toggle="modal">
-              <i class="icon-remove" th:id="${u.id }" onclick="copy(this)" ></i></a>
+              <i class="icon-remove" th:id="${s.id }" onclick="copy(this)" ></i></a>
           </td>
         </tr>
        
@@ -121,8 +121,8 @@
                     <!--  class="pagination" -->
 
                     <!--<span th:each="p:${page.pageView }">-->
-  <span th:each="u:${users.pageView }">
-		<span class="page" th:utext="${u }"></span>
+  <span th:each="s:${staffs.pageView }">
+		<span class="page" th:utext="${s }"></span>
     </span>
 
  </div>
@@ -130,7 +130,7 @@
 <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">删除用户</h3>
+        <h3 id="myModalLabel">删除员工</h3>
     </div>
     <div class="modal-body">
         <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除么？</p>
@@ -156,10 +156,10 @@
         	id = $(obj).attr("id");
 		}
 		function del(){
-			window.location.href="delUser?id="+id;
+			window.location.href="delStaff?id="+id;
 		}
-		function loadUser(obj){
-	    	window.location.href="toUpdateUser?id="+$(obj).attr("id");
+		function loadStaff(obj){
+	    	window.location.href="toUpdateStaff?id="+$(obj).attr("id");
 	    }
     </script>
     

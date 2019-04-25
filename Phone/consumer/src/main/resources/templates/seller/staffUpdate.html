@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>用户修改页</title>
+    <title>员工修改页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -63,7 +63,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">修改用户</h1>
+            <h1 class="page-title">修改员工</h1>
         </div>
 
         <div class="container-fluid">
@@ -72,7 +72,7 @@
 
 	
 <div class="well">
-<form id="tab" action="updateUser" method="post" th:object="${user}">
+<form id="tab" action="updateStaff" method="post" th:object="${staff}">
 	<div class="btn-toolbar">
     	<button type="submit" class="btn btn-primary"><i class="icon-save">修改</i></button>
   		<div class="btn-group"></div>
@@ -84,21 +84,21 @@
     	<input type="hidden" name="id" th:field="*{id}">
 
           <label>用户姓名</label>
-          <input type="text" name="uName" th:field="*{uName}" class="input-xlarge">
+          <input type="text" name="stName" th:field="*{stName}" class="input-xlarge">
           <label>性别</label>
-          <input type="text" name="uSex" th:field="*{uSex}" class="input-xlarge">
-          <label>年龄</label>
-          <input type="text" name="uAge" th:field="*{uAge}" class="input-xlarge">
-          <label>工作</label>
-          <input type="text" name="job" th:field="*{job}" class="input-xlarge">
-          <label>地址</label>
-          <input type="text" name="address" th:field="*{address}" class="input-xlarge">
-          <label>电话</label>
-          <input type="text" name="uTel" th:field="*{uTel}" class="input-xlarge">
-          <label>买过机型</label>
-          <input type="text" name="buy" th:field="*{buy}" class="input-xlarge">
-          <label>备注</label>
-          <input type="text" name="comment" th:field="*{comment}" class="input-xlarge">
+          <input type="text" name="stSex" th:field="*{stSex}" class="input-xlarge">
+          <label>所属部门</label>
+          <input type="text" name="dept" th:field="*{dept}" class="input-xlarge">
+          <label>销售数量</label>
+          <input type="text" name="count" th:field="*{count}" class="input-xlarge">
+          <label>基本工资</label>
+          <input type="text" name="basic" th:field="*{basic}" class="input-xlarge">
+          <label>奖金</label>
+          <input type="text" name="bonus" th:field="*{bonus}" class="input-xlarge">
+          <label>总工资</label>
+          <input type="text" name="salary" th:field="*{salary}" class="input-xlarge">
+          <label>员工状态</label>
+          <input type="text" name="status" th:field="*{status}" class="input-xlarge">
     
       </div>
       <div class="tab-pane fade" id="profile">
