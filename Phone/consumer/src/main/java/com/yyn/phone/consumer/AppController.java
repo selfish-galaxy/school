@@ -1,9 +1,7 @@
 package com.yyn.phone.consumer;
 
 import com.github.pagehelper.PageHelper;
-import com.yyn.phone.consumer.service.BrandService;
-import com.yyn.phone.consumer.service.ProductService;
-import com.yyn.phone.consumer.service.UserService;
+import com.yyn.phone.consumer.service.*;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +31,16 @@ public class AppController {
     @Bean
     UserService userService(){
         return new UserService();
+    }
+
+    @Bean
+    StaffService staffService(){
+        return new StaffService();
+    }
+
+    @Bean
+    SkuService skuService(){
+        return new SkuService();
     }
 
 //    //配置mybatis的分页插件pageHelper

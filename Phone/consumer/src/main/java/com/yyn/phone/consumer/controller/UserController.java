@@ -18,7 +18,7 @@ public class UserController {
     查询所有，显示列表
      */
     @RequestMapping("/userList1")
-    public String userList(Model model){
+    public String userList1(Model model){
         model.addAttribute("users",userService.showAllUsers());
         return "seller/user";
     }
@@ -71,7 +71,7 @@ public class UserController {
     查询所有，显示列表（带分页）
      */
     @RequestMapping("/userList")
-    public String userList1(Integer currentPage, Integer size, Model model){
+    public String userList(Integer currentPage, Integer size, Model model){
         if(currentPage == null){
             currentPage = 1;
         }
