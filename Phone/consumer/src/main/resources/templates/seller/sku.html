@@ -82,11 +82,11 @@
       <thead>
         <tr>
           <th>库存编号</th>
-          <th>手机id</th>
+          <th>商品id</th>
           <th>颜色id</th>
           <th>规格id</th>
           <th>价格</th>
-          <th>数量</th>
+          <th>库存数量</th>
 
           <th style="width: 36px;">操作</th>
         </tr>
@@ -95,16 +95,16 @@
       
       <tr th:each="s:${skus.items }">
           <td th:text="${s.skuid }"></td>
-          <td th:text="${u.uName }"></td>
-          <td th:text="${u.uSex }"></td>
-          <td th:text="${u.uAge }"></td>
-          <td th:text="${u.job }"></td>
-          <td th:text="${u.address }"></td>
+          <td th:text="${s.proId }"></td>
+          <td th:text="${s.colorId }"></td>
+          <td th:text="${s.sizeId }"></td>
+          <td th:text="${s.price }"></td>
+          <td th:text="${s.amount }"></td>
 
           <td>
-              <a href="javascript:;" th:id="${u.id}" onclick="javascript:loadUser(this)"><i class="icon-pencil"></i></a>
+              <a href="javascript:;" th:id="${s.skuid}" onclick="javascript:loadSku(this)"><i class="icon-pencil"></i></a>
               <a href="#myModal" role="button" data-toggle="modal">
-              <i class="icon-remove" th:id="${u.id }" onclick="copy(this)" ></i></a>
+              <i class="icon-remove" th:id="${s.skuid }" onclick="copy(this)" ></i></a>
           </td>
         </tr>
        
@@ -126,7 +126,7 @@
 <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">删除用户</h3>
+        <h3 id="myModalLabel">删除该库存</h3>
     </div>
     <div class="modal-body">
         <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除么？</p>
@@ -152,10 +152,10 @@
         	id = $(obj).attr("id");
 		}
 		function del(){
-			window.location.href="delUser?id="+id;
+			window.location.href="delSku?id="+id;
 		}
-		function loadUser(obj){
-	    	window.location.href="toUpdateUser?id="+$(obj).attr("id");
+		function loadSku(obj){
+	    	window.location.href="toUpdateSku?id="+$(obj).attr("id");
 	    }
     </script>
     

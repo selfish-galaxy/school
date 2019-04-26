@@ -72,7 +72,7 @@
 
 	
 <div class="well">
-<form id="tab" action="updateUser" method="post" th:object="${user}">
+<form id="tab" action="updateSku" method="post" th:object="${sku}">
 	<div class="btn-toolbar">
     	<button type="submit" class="btn btn-primary"><i class="icon-save">修改</i></button>
   		<div class="btn-group"></div>
@@ -81,24 +81,19 @@
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
 
-    	<input type="hidden" name="id" th:field="*{id}">
+    	<input type="hidden" name="skuid" th:field="*{skuid}">
 
-          <label>用户姓名</label>
-          <input type="text" name="uName" th:field="*{uName}" class="input-xlarge">
-          <label>性别</label>
-          <input type="text" name="uSex" th:field="*{uSex}" class="input-xlarge">
-          <label>年龄</label>
-          <input type="text" name="uAge" th:field="*{uAge}" class="input-xlarge">
-          <label>工作</label>
-          <input type="text" name="job" th:field="*{job}" class="input-xlarge">
-          <label>地址</label>
-          <input type="text" name="address" th:field="*{address}" class="input-xlarge">
-          <label>电话</label>
-          <input type="text" name="uTel" th:field="*{uTel}" class="input-xlarge">
-          <label>买过机型</label>
-          <input type="text" name="buy" th:field="*{buy}" class="input-xlarge">
-          <label>备注</label>
-          <input type="text" name="comment" th:field="*{comment}" class="input-xlarge">
+          <label>商品id</label>
+          <input type="text" name="proId" th:field="*{proId}" class="input-xlarge">
+          <label>颜色id</label>
+          <input type="text" name="colorId" th:field="*{colorId}" class="input-xlarge">
+          <label>规格id</label>
+          <input type="text" name="sizeId" th:field="*{sizeId}" class="input-xlarge">
+          <label>价格</label>
+          <input type="text" name="price" th:field="*{price}" class="input-xlarge">
+          <label>库存数量</label>
+          <input type="text" name="amount" th:field="*{amount}" class="input-xlarge">
+
     
       </div>
       <div class="tab-pane fade" id="profile">
