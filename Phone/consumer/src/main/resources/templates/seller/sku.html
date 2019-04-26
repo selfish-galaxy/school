@@ -93,7 +93,8 @@
       </thead>
       <tbody>
       
-      <tr th:each="s:${skus.items }">
+      <!--<tr th:each="s:${skus.items }">-->
+      <tr th:each="s:${skus }">
           <td th:text="${s.skuid }"></td>
           <td th:text="${s.proId }"></td>
           <td th:text="${s.colorId }"></td>
@@ -117,9 +118,9 @@
                     <!--  class="pagination" -->
 
                     <!--<span th:each="p:${page.pageView }">-->
-  <span th:each="s:${skus.pageView }">
+  <!--<span th:each="s:${skus.pageView }">
 		<span class="page" th:utext="${s }"></span>
-    </span>
+    </span>-->
 
  </div>
 
