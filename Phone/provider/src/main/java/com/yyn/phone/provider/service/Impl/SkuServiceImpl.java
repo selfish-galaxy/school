@@ -24,7 +24,7 @@ public class SkuServiceImpl implements SkuService {
 
     @Override
     public PageBean<Sku> showAll(Integer page, Integer size) {
-        PageRequest of = PageRequest.of(page, size);
+        PageRequest of = PageRequest.of(page - 1, size);
         Page<Sku> all = skuRepository.findAll(of);
         PageBean<Sku> pageBean = new PageBean<>();
         pageBean.setItems(all.getContent());
@@ -56,5 +56,10 @@ public class SkuServiceImpl implements SkuService {
     @Override
     public void updateSku(Sku sku) {
         skuRepository.save(sku);
+    }
+
+    @Override
+    public List<Sku> selectByProId(Integer proId) {
+        return skuRepository.findAllByProId(proId);
     }
 }

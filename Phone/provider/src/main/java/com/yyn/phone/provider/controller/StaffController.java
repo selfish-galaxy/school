@@ -35,12 +35,12 @@ public class StaffController {
         return staffService.selectOneStaff(id);
     }
 
-    @RequestMapping("/updateUser")
+    @RequestMapping("/updateStaff")
     public void updateStaff(Staff staff){
         staffService.updateStaff(staff);
     }
 
-    @RequestMapping("/page")
+    @RequestMapping("/pageStaff")
     public PageBean<Staff> staffPage(Integer page, Integer size){
         return staffService.showAll(page, size);
     }

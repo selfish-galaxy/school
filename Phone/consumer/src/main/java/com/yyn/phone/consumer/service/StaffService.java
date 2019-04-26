@@ -38,7 +38,7 @@ public class StaffService {
     }
 
     public PageBean<Staff> staffPage(Integer page, Integer size){
-        PageBean<Staff> result = restTemplate.getForObject("http://service-provider/page?page={1}&size={2}", PageBean.class, page, size);
+        PageBean<Staff> result = restTemplate.getForObject("http://service-provider/pageStaff?page={1}&size={2}", PageBean.class, page, size);
         return result;
     }
 

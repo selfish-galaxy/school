@@ -85,4 +85,10 @@ public class SkuController {
         model.addAttribute("skus",skuPageBean);
         return "seller/sku";
     }
+
+    @RequestMapping("/selectSkuList")
+    public String selectSkuByProId(Model model,Integer proId){
+        model.addAttribute("skus",skuService.selectSkuByProId(proId));
+        return "seller/sku";
+    }
 }

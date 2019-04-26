@@ -40,8 +40,13 @@ public class SkuController {
         skuService.updateSku(sku);
     }
 
-    @RequestMapping("/page")
+    @RequestMapping("/pageSku")
     public PageBean<Sku> skuPage(Integer page, Integer size){
         return skuService.showAll(page, size);
+    }
+
+    @RequestMapping("/selectSku")
+    public List<Sku> selectByProId(Integer proId){
+        return skuService.selectByProId(proId);
     }
 }

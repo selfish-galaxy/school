@@ -3,11 +3,15 @@ package com.yyn.phone.provider.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler","fieldHandler"})
 public class Sku {
 
+    @Id
+    @GeneratedValue
     private Integer skuid;
 
     private Integer proId;

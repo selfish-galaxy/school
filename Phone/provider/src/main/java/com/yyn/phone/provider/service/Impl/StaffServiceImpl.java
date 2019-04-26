@@ -25,7 +25,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public PageBean<Staff> showAll(Integer page, Integer size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
+        PageRequest pageRequest = PageRequest.of(page - 1, size);
         Page<Staff> all = staffRepository.findAll(pageRequest);
         PageBean<Staff> pageBean = new PageBean<>();
         pageBean.setItems(all.getContent());

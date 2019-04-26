@@ -18,4 +18,6 @@ public interface SkuService {
     Sku selectOneSku(Integer id);
 
     void updateSku(Sku sku);
+
+    List<Sku> selectByProId(Integer proId);
 }
