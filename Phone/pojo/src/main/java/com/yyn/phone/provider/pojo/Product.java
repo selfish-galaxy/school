@@ -15,7 +15,7 @@ public class Product {
     @GeneratedValue
     private Integer id;
 
-    private Integer pId;
+//    private Integer pId;
 
     private String pName;
 
@@ -42,13 +42,13 @@ public class Product {
         this.id = id;
     }
 
-    public Integer getpId() {
-        return pId;
-    }
-
-    public void setpId(Integer pId) {
-        this.pId = pId;
-    }
+//    public Integer getpId() {
+//        return pId;
+//    }
+//
+//    public void setpId(Integer pId) {
+//        this.pId = pId;
+//    }
 
     public String getpName() {
         return pName;

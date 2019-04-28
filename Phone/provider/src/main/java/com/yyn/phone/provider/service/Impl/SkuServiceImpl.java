@@ -4,8 +4,10 @@ import com.yyn.phone.provider.dao.SkuRepository;
 import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Sku;
 import com.yyn.phone.provider.service.SkuService;
+import com.yyn.phone.provider.tools.PageTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +61,8 @@ public class SkuServiceImpl implements SkuService {
     }
 
     @Override
-    public List<Sku> selectByProId(Integer proId) {
-        return skuRepository.findAllByProId(proId);
+    public PageBean<Sku> selectByProId(Integer id,Integer page,Integer size) {
+        PageRequest of = PageRequest.of(page - 1, size);
+        return PageTools.makePage(page,size,skuRepository.findAllByProId(id,of));
     }
 }

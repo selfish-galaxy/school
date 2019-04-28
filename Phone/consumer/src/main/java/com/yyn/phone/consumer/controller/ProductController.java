@@ -41,10 +41,9 @@ public class ProductController {
         if(size == null){
             size = 10;
         }
-        StringBuilder params = new StringBuilder();
-        params.append("size=" + size);
         PageBean<Product> productPageBean = productService.showAllProductsPage(currentPage, size);
-        productPageBean.pageView("productList", params.toString());
+//        productPageBean.pageView("productList", params.toString());
+        productPageBean.pageView("productList");
         model.addAttribute("products",productPageBean);
         return "seller/product";
     }

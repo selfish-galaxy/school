@@ -46,7 +46,7 @@ public class SkuController {
     }
 
     @RequestMapping("/selectSku")
-    public List<Sku> selectByProId(Integer proId){
-        return skuService.selectByProId(proId);
+    public PageBean<Sku> selectByProId(Integer id,Integer page, Integer size){
+        return skuService.selectByProId(id, page, size);
     }
 }

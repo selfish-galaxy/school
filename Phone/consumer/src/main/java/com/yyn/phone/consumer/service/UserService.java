@@ -41,7 +41,7 @@ public class UserService {
     }
 
     public PageBean<User> userPage(Integer page, Integer size){
-        PageBean<User> result = restTemplate.getForObject("http://service-provider/page?page={1}&size={2}", PageBean.class, page, size);
+        PageBean<User> result = restTemplate.getForObject("http://service-provider/pageUser?page={1}&size={2}", PageBean.class, page, size);
         return result;
     }
 

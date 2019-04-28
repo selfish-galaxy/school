@@ -116,13 +116,13 @@ public class PageBean<T> implements Serializable{
     /**
      * 分页显示样示部分
      */
-    public void pageView(String url,String params){
+    public void pageView(String url){
 
         pageView = new ArrayList<String>();
 
         if(this.currentPage != 1){
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage=1'\"><font size=2>首页</font></a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.currentPage-1)+"'\"><font size=2>上一页</font></a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage=1'\"><font size=2>首页</font></a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.currentPage-1)+"'\"><font size=2>上一页</font></a>");
         }else{
             pageView.add("<font size=2>首页</font>");
             pageView.add("<font size=2>上一页</font>");
@@ -135,7 +135,7 @@ public class PageBean<T> implements Serializable{
                     i = i+1;
                     if(this.currentPage==this.getTotalPage())break;
                 }
-                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(i+1)+"'\">"+(i+1)+"</a>");
+                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(i+1)+"'\">"+(i+1)+"</a>");
             }
         }else if(this.getTotalPage() <= 20){
             //没有把...加上
@@ -158,7 +158,7 @@ public class PageBean<T> implements Serializable{
                     i = i+1;
                     if(this.currentPage==this.getTotalPage()) break;
                 }
-                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(i)+"'\">"+(i)+"</a>");
+                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(i)+"'\">"+(i)+"</a>");
             }
 
         }else if(this.currentPage<7){
@@ -167,14 +167,14 @@ public class PageBean<T> implements Serializable{
                     pageView.add("<strong>"+this.currentPage+"</strong>");
                     i = i+1;
                 }
-                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(i+1)+"'\">"+(i+1)+"</a>");
+                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(i+1)+"'\">"+(i+1)+"</a>");
             }
             pageView.add("...");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.getTotalPage()-1)+"'\">"+(this.getTotalPage()-1)+"</a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.getTotalPage())+"'\">"+(this.getTotalPage())+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.getTotalPage()-1)+"'\">"+(this.getTotalPage()-1)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.getTotalPage())+"'\">"+(this.getTotalPage())+"</a>");
         }else if(this.currentPage>this.getTotalPage()-6){
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(1)+"'\">"+(1)+"</a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(2)+"'\">"+(2)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(1)+"'\">"+(1)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(2)+"'\">"+(2)+"</a>");
             pageView.add("...");
             for (int i = this.getTotalPage()-8; i <this.getTotalPage() ; i++) {
                 if(i+1==this.currentPage){
@@ -182,31 +182,31 @@ public class PageBean<T> implements Serializable{
                     i = i+1;
                     if(this.currentPage==this.getTotalPage()) break;
                 }
-                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(i+1)+"'\">"+(i+1)+"</a>");
+                pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(i+1)+"'\">"+(i+1)+"</a>");
             }
         }else{
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(1)+"'\">"+(1)+"</a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(2)+"'\">"+(2)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(1)+"'\">"+(1)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(2)+"'\">"+(2)+"</a>");
             pageView.add("...");
 
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.currentPage-2)+"'\">"+(this.currentPage-2)+"</a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.currentPage-1)+"'\">"+(this.currentPage-1)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.currentPage-2)+"'\">"+(this.currentPage-2)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.currentPage-1)+"'\">"+(this.currentPage-1)+"</a>");
             pageView.add("<strong>"+this.currentPage+"</strong>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.currentPage+1)+"'\">"+(this.currentPage+1)+"</a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.currentPage+2)+"'\">"+(this.currentPage+2)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.currentPage+1)+"'\">"+(this.currentPage+1)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.currentPage+2)+"'\">"+(this.currentPage+2)+"</a>");
 
             pageView.add("...");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.getTotalPage()-1)+"'\">"+(this.getTotalPage()-1)+"</a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.getTotalPage())+"'\">"+(this.getTotalPage())+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.getTotalPage()-1)+"'\">"+(this.getTotalPage()-1)+"</a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.getTotalPage())+"'\">"+(this.getTotalPage())+"</a>");
         }
         if(this.currentPage != this.getTotalPage()){
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+(this.currentPage+1)+"'\"><font size=2>下一页</font></a>");
-            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + params + "&currentPage="+this.getTotalPage()+"'\"><font size=2>尾页</font></a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+(this.currentPage+1)+"'\"><font size=2>下一页</font></a>");
+            pageView.add("<a href=\"javascript:void(0);\" onclick=\"javascript:window.location.href='" + url + "?" + this.pageSize + "&currentPage="+this.getTotalPage()+"'\"><font size=2>尾页</font></a>");
         } else{
             pageView.add("<font size=2>下一页</font>");
             pageView.add("<font size=2>尾页</font>");
         }
-        pageView.add("共<var>" + getTotalPage() + "</var>页 到第<input type='text' id='currentPage'  size='3' />页 <input type='button' id='skip' class='hand btn60x20' value='确定' onclick=\"javascript:window.location.href = '" + url + "?" + params + "&currentPage=' + $('#currentPage').val() \"/>");
+        pageView.add("共<var>" + getTotalPage() + "</var>页 到第<input type='text' id='currentPage'  size='3' />页 <input type='button' id='skip' class='hand btn60x20' value='确定' onclick=\"javascript:window.location.href = '" + url + "?" + this.pageSize + "&currentPage=' + $('#currentPage').val() \"/>");
     }
 
 

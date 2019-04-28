@@ -43,8 +43,8 @@ public class SkuService {
         return result;
     }
 
-    public List<Sku> selectSkuByProId(Integer proId){
-        return restTemplate.getForObject("http://service-provider/selectSku?skuid={1}",List.class,proId);
+    public PageBean<Sku> selectSkuByProId(Integer id,Integer page, Integer size){
+        return restTemplate.getForObject("http://service-provider/selectSku?id={1}&page={2}&size={3}",PageBean.class,id,page,size);
     }
 
 }

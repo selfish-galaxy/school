@@ -19,5 +19,5 @@ public interface SkuService {
 
     void updateSku(Sku sku);
 
-    List<Sku> selectByProId(Integer proId);
+    PageBean<Sku> selectByProId(Integer proId,Integer page, Integer size);
 }

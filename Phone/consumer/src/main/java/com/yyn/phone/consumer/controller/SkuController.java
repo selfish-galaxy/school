@@ -78,17 +78,24 @@ public class SkuController {
         if(size == null){
             size = 10;
         }
-        StringBuilder params = new StringBuilder();
-        params.append("size=" + size);
         PageBean<Sku> skuPageBean = skuService.skuPage(currentPage, size);
-        skuPageBean.pageView("skuList", params.toString());
+//        skuPageBean.pageView("skuList", params.toString());
+        skuPageBean.pageView("skuList");
         model.addAttribute("skus",skuPageBean);
         return "seller/sku";
     }
 
     @RequestMapping("/selectSkuList")
-    public String selectSkuByProId(Model model,Integer proId){
-        model.addAttribute("skus",skuService.selectSkuByProId(proId));
+    public String selectSkuByProId(Model model, Integer id,Integer currentPage, Integer size){
+        if(currentPage == null){
+            currentPage = 1;
+        }
+        if(size == null){
+            size = 10;
+        }
+        PageBean<Sku> skuPageBean = skuService.selectSkuByProId(id, currentPage, size);
+        skuPageBean.pageView("selectSkuList");
+        model.addAttribute("skus",skuPageBean);
         return "seller/sku";
     }
 }

@@ -19,9 +19,9 @@ public class ProductService {
     }
 
     public void addProduct(Product product){
-        restTemplate.getForObject("http://service-provider/addProduct?pId={1}&pName={2}&braId={3}" +
+        restTemplate.getForObject("http://service-provider/addProduct?id={1}&pName={2}&braId={3}" +
                 "&colorId={4}&sizeId={5}&pImg={6}&prices={7}&createTime={8}&description={9}",Void.class,
-                product.getpId(),product.getpName(),product.getBraId(),product.getColorId(),product.getSizeId(),
+                product.getId(),product.getpName(),product.getBraId(),product.getColorId(),product.getSizeId(),
                 product.getpImg(),product.getPrices(),product.getCreateTime(),product.getDescription());
     }
 
@@ -34,9 +34,9 @@ public class ProductService {
     }
 
     public void updateProduct(Product product){
-        restTemplate.getForObject("http://service-provider/updateProduct?id={1}&pId={2}&pName={3}&braId={4}" +
-                        "&colorId={5}&sizeId={6}&pImg={7}&prices={8}&createTime={9}&description={10}",Void.class,
-                product.getId(),product.getpId(),product.getpName(),product.getBraId(),product.getColorId(), product.getSizeId(),
+        restTemplate.getForObject("http://service-provider/updateProduct?id={1}&pName={2}&braId={3}" +
+                        "&colorId={4}&sizeId={5}&pImg={6}&prices={7}&createTime={8}&description={9}",Void.class,
+                product.getId(),product.getpName(),product.getBraId(),product.getColorId(), product.getSizeId(),
                 product.getpImg(),product.getPrices(),product.getCreateTime(),product.getDescription());
     }
 

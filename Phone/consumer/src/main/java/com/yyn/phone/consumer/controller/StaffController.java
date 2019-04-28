@@ -80,10 +80,9 @@ public class StaffController {
         if(size == null){
             size = 10;
         }
-        StringBuilder params = new StringBuilder();
-        params.append("size=" + size);
         PageBean<Staff> staffPageBean = staffService.staffPage(currentPage, size);
-        staffPageBean.pageView("staffList", params.toString());
+//        staffPageBean.pageView("staffList", params.toString());
+        staffPageBean.pageView("staffList");
         model.addAttribute("staffs",staffPageBean);
         return "seller/staff";
     }

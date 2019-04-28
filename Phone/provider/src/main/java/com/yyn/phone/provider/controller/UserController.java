@@ -40,7 +40,7 @@ public class UserController {
         userService.updateUser(user);
     }
 
-    @RequestMapping("/page")
+    @RequestMapping("/pageUser")
     public PageBean<User> userPage(Integer page, Integer size){
         return userService.showAll(page, size);
     }

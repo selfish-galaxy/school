@@ -76,12 +76,13 @@ public class UserController {
             currentPage = 1;
         }
         if(size == null){
-            size = 10;
+            size = 5;
         }
-        StringBuilder params = new StringBuilder();
-        params.append("size=" + size);
+//        StringBuilder params = new StringBuilder();
+//        params.append("size=" + size);
         PageBean<User> userPageBean = userService.userPage(currentPage, size);
-        userPageBean.pageView("userList", params.toString());
+//        userPageBean.pageView("userList", params.toString());
+        userPageBean.pageView("userList");
         model.addAttribute("users",userPageBean);
         return "seller/user";
     }
