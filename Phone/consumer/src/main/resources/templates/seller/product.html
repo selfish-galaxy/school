@@ -91,7 +91,7 @@
       <thead>
         <tr>
           <th>商品编号</th>
-          <th>商品ID</th>
+          <!--<th>商品ID</th>-->
           <th>商品名称</th>
           <th>所属品牌</th>
           <th>颜色</th>
@@ -108,7 +108,7 @@
         <!--<tr th:each="p:${page.list }">-->
         <tr th:each="p:${products.items }">
           <td th:text="${p.id }"></td>
-          <td th:text="${p.pId }"></td>
+          <!--<td th:text="${p.pId }"></td>-->
           <td th:text="${p.pName }"></td>
           <td th:text="${p.braId }"></td>
           <td th:text="${p.colorId }"></td>
