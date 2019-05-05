@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>商品添加页</title>
+    <title>订单生成页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -62,7 +62,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">添加商品</h1>
+            <h1 class="page-title">添加订单</h1>
         </div>
 
         <div class="container-fluid">
@@ -70,44 +70,40 @@
                     
 
 <div class="well">
-    <form id="tab" action="addProduct" method="post" enctype="multipart/form-data">
+    <form id="tab" action="addOrdery" method="post" enctype="multipart/form-data">
     <div class="btn-toolbar">
-    	<button type="submit" class="btn btn-primary"><i class="icon-save">添加</i></button>
+    	<button type="submit" class="btn btn-primary"><i class="icon-save">生成</i></button>
   		<div class="btn-group"></div>
 	</div>
     
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
 
-        <label>商品ID</label>
-        <input type="text" name="id" value="" class="input-xlarge">
-        <label>商品名称</label>
-        <input type="text" name="pName" value="" class="input-xlarge">
-        <label>所属品牌</label>
+        <!--<label>商品ID</label>
+        <input type="text" name="id" value="" class="input-xlarge">-->
+        <label>客户姓名</label>
+        <input type="text" name="userId" value="" class="input-xlarge">
+
+        <!--<label>所属品牌</label>
         <select name="braId">
 			<option value="">请选择品牌</option>
 			<option th:each="b:${brands }" th:value="${b.id}"><span th:text="${b.bName}"></span></option>
-		</select>
+		</select>-->
         <br>
 
+        <label>购买型号</label>
+        <input type="text" name="proId" value="" class="input-xlarge">
         <label>颜色</label>
         <input type="text" name="colorId" value="" class="input-xlarge">
         <label>版本</label>
         <input type="text" name="sizeId" value="" class="input-xlarge">
 
-        <label>图片</label>
-        <input type="hidden" id="pImg" name="pImg" value="">
-        <input type="file" name="file" id="file" value=""/>
-        <!-- <input type="button" id="sure" name="sure" onclick="upload()"> -->
-
-        <label>价格</label>
-        <input type="text" name="prices" value="" class="input-xlarge">
-        <label>上市时间</label>
-        <input type="text" name="createTime" value="" class="input-xlarge">
-        <label>描述</label>
-        <textarea name="description" rows="3" class="input-xlarge">
-
-        </textarea>
+        <label>实收金额</label>
+        <input type="text" name="money" value="" class="input-xlarge">
+        <label>经手人</label>
+        <input type="text" name="staffId" value="" class="input-xlarge">
+          <!--<label>时间</label>
+          <input type="text" name="time" value="" class="input-xlarge">-->
         
       </div>
   </div>

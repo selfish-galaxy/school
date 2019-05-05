@@ -69,7 +69,7 @@
                             <li class="divider"></li>
                             <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
                             <li class="divider visible-phone"></li>
-                            <li><a tabindex="-1" href="toSellerLogin">Logout</a></li>
+                            <li><a tabindex="-1" href="toStaffLogin">Logout</a></li>
                         </ul>
                     </li>
                     
@@ -78,13 +78,21 @@
                 <a class="brand" href="/"><span class="first">手机卖场</span> <span class="second">销售管理系统</span></a>
         </div>
     </div>
-    <div class="sidebar-nav">
+    <!--<div class="sidebar-nav">
         <a href="productList" class="nav-header" ><i class="icon-comment"></i>商品管理</a>
-        <a href="orderList" class="nav-header" ><i class="icon-comment"></i>订单管理</a>
+        <a href="orderyList" class="nav-header" ><i class="icon-comment"></i>订单管理</a>
         <a href="brandList" class="nav-header" ><i class="icon-comment"></i>品牌管理</a>
         <a href="userList" class="nav-header" ><i class="icon-comment"></i>用户管理</a>
         <a href="staffList" class="nav-header" ><i class="icon-comment"></i>员工管理</a>
         <a href="skuList" class="nav-header" ><i class="icon-comment"></i>库存管理</a>
+    </div>-->
+    <div class="sidebar-nav">
+        <!--<a href="/menuList?id="+id>gusadg</a>-->
+        <!--<a href="" onclick="showMenu(id)">rtyuio</a>-->
+        <input type="hidden" name="id" th:value="${id}" onclick="copy(this)" >
+        <tr th:each="m:${menus }">
+        <a th:href="${m.url }" class="nav-header" ><i class="icon-comment"></i><td th:text="${m.urlName }"></td></a>
+        </tr>
     </div>
 </div>     
 
@@ -106,6 +114,14 @@
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
         });
+
+        function copy(obj){
+            id = $(obj).attr("id");
+        }
+        function showMenu(id){
+            window.location.href="menuList?id="+id;
+        }
+
     </script>
     
   </body>

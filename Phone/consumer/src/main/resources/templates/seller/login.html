@@ -61,7 +61,7 @@
                 <ul class="nav pull-right">
                     
                 </ul>
-                <a class="brand" href="index"><span class="first">晨花花</span> <span class="second">蛋糕店</span></a>
+                <a class="brand" href="index"><span class="first">手机卖场</span> <span class="second">销售管理系统</span></a>
         </div>
     </div>
     
@@ -75,11 +75,11 @@
         <div class="block">
             <p class="block-heading">登录</p>
             <div class="block-body">
-                <form action="sellerLogin" method="post">
+                <form action="staffLogin" method="post">
                     <label>用户名</label>
-                    <input type="text" name="susername" class="span12" th:value="${susername}">
+                    <input type="text" name="stName" class="span12" th:value="${stName}">
                     <label>密码</label>
-                    <input type="password" name="spwd" class="span12" th:value="${spwd}">
+                    <input type="password" name="stPwd" class="span12" th:value="${stPwd}">
                     <input type="submit" class="btn btn-primary pull-right" value="登录">
                     <label class="remember-me"><input type="checkbox" name="remember" value="1"> 请记住我</label>
                     <div class="clearfix"></div>

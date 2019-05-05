@@ -48,8 +48,8 @@
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
   
   <script type="text/javascript">
-  function toAddOrder(){
-	  window.location.href="toAddOrder";
+  function toAddOrdery(){
+	  window.location.href="toOrderyAdd";
   }
   </script>
   </head>
@@ -79,9 +79,9 @@
                     <input class="btn" type="submit" value="查询"/>
                 </form> -->
                
- <!-- <div class="btn-toolbar">
-    <button class="btn btn-primary" onclick="toAddProduct()"><i class="icon-plus"></i>添加</button>
-  <div class="btn-group"></div> -->
+  <div class="btn-toolbar">
+    <button class="btn btn-primary" onclick="toAddOrdery()"><i class="icon-plus"></i>添加</button>
+  <div class="btn-group"></div>
 </div>
 <div class="well">
     <table class="table" style="text-align: center;">
@@ -90,35 +90,42 @@
           <th>订单ID</th>
           <th>客户姓名</th>
           <th>购买型号</th>
-          <th>金额</th>
-          <th>订单状态</th>
-          <th>支付状态</th>
+          <th>颜色</th>
+          <th>规格</th>
+          <th>实收金额</th>
+          <th>经手人</th>
           <th>创建时间</th>
+          <th>订单状态</th>
           <th style="width: 50px;">操作</th>
         </tr>
       </thead>
         <!--<tr th:each="o:${page.list }">-->
-        <tr th:each="o:${orders }">
-          <td th:text="${o.oid }"></td>
-          <td th:text="${o.oname }"></td>
-          <td th:text="${o.phone }"></td>
-          <td th:text="${o.oprice}"></td>
-          <td th:text="${o.getOrderEnum().getMessage()}"></td>
-          <td th:text="${o.getBuyerEnum().getMessage()}"></td>
-          <td th:text="${o.getTime()}"></td>
-          <td>
-           <a href="javascript:;" th:id="${o.oid}" onclick="javascript:ordersdetail(this)">详情</a>
-       <td><a href="javascript:;" th:id="${o.oid}" onclick="javascript:cancel(this)">取消</a></td>
-             <td><a href="#myModal" data-toggle="modal" th:id="${o.oid}" onclick="javascript:fuzhi(this)" role="button"><i class="icon-remove"></i></a>
+        <tr th:each="o:${orderys.items }">
+          <td th:text="${o.id }"></td>
+          <td th:text="${o.userId }"></td>
+          <td th:text="${o.proId }"></td>
+          <td th:text="${o.colorId}"></td>
+          <td th:text="${o.sizeId}"></td>
+          <td th:text="${o.money}"></td>
+          <td th:text="${o.staffId}"></td>
+          <td th:text="${#strings.substring(#strings.replace(o.orderTime,'T',' '),0,19)}"></td>
+          <td th:text="${o.orderCondition}"></td>
+          <td th:if="${o.orderCondition} ne '售后退货'">
+              <a href="javascript:;" th:id="${o.id}" onclick="javascript:loadOrdery(this)"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal">
+              <i class="icon-remove" th:id="${o.id }" onclick="copy(this)" ></i></a>
+          </td>
+          <td th:if="${o.orderCondition} eq '售后退货'">
+              &nbsp;&nbsp;&nbsp;&nbsp;
           </td>
         </tr>
 
     </table>
 </div>
-<div class="pagination">
+<div class="pagination" style="text-align: right">
    <!--  class="pagination" -->
-   
-	<span th:each="o:${page.pageView }">
+
+	<span th:each="o:${orderys.pageView }">
 		<span class="page" th:utext="${o }"></span>
 	</span>
 	
@@ -127,14 +134,14 @@
 <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">删除订单？</h3>
+        <h3 id="myModalLabel">取消订单？</h3>
     </div>
     <div class="modal-body">
-        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除该订单吗?</p>
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要取消该订单吗?</p>
     </div>
     <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-        <button class="btn btn-danger" data-dismiss="modal" onclick="deleteorder()">删除</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">不了</button>
+        <button class="btn btn-danger" data-dismiss="modal" onclick="cancelOrdery()">取消</button>
     </div>
 </div>
 
@@ -151,8 +158,8 @@
     $(function() {
         $('.demo-cancel-click').click(function(){return false;});
     });
-    function fuzhi(obj){
-    	oid = $(obj).attr("id");
+    function copy(obj){
+    	id = $(obj).attr("id");
     }
     function deleteorder(obj){
     	window.location.href="deleteorder?oid="+oid;
@@ -162,6 +169,13 @@
     }
     function cancel(obj){
     	window.location.href="cancel?oid="+$(obj).attr("id");
+    }
+
+    function loadOrdery(obj){
+        window.location.href="toUpdateOrdery?id="+$(obj).attr("id");
+    }
+    function cancelOrdery(){
+        window.location.href="cancelOrdery?id="+id;
     }
     </script>
     

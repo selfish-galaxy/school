@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>用户修改页</title>
+    <title>订单修改页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -63,7 +63,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">修改用户</h1>
+            <h1 class="page-title">修改订单</h1>
         </div>
 
         <div class="container-fluid">
@@ -72,7 +72,7 @@
 
 	
 <div class="well">
-<form id="tab" action="updateUser" method="post" th:object="${user}">
+<form id="tab" action="updateOrdery" method="post" th:object="${ordery}">
 	<div class="btn-toolbar">
     	<button type="submit" class="btn btn-primary"><i class="icon-save">修改</i></button>
   		<div class="btn-group"></div>
@@ -83,22 +83,22 @@
 
     	<input type="hidden" name="id" th:field="*{id}">
 
-          <label>用户姓名</label>
-          <input type="text" name="uName" th:field="*{uName}" class="input-xlarge">
-          <label>性别</label>
-          <input type="text" name="uSex" th:field="*{uSex}" class="input-xlarge">
-          <label>年龄</label>
-          <input type="text" name="uAge" th:field="*{uAge}" class="input-xlarge">
-          <label>工作</label>
-          <input type="text" name="job" th:field="*{job}" class="input-xlarge">
-          <label>地址</label>
-          <input type="text" name="address" th:field="*{address}" class="input-xlarge">
-          <label>电话</label>
-          <input type="text" name="uTel" th:field="*{uTel}" class="input-xlarge">
-          <label>买过机型</label>
+          <label>客户姓名</label>
+          <input type="text" name="userId" th:field="*{userId}" class="input-xlarge">
+          <label>购买型号</label>
+          <input type="text" name="proId" th:field="*{proId}" class="input-xlarge">
+          <label>颜色</label>
+          <input type="text" name="colorId" th:field="*{colorId}" class="input-xlarge">
+          <label>版本</label>
+          <input type="text" name="sizeId" th:field="*{sizeId}" class="input-xlarge">
+          <label>实收金额</label>
+          <input type="text" name="money" th:field="*{money}" class="input-xlarge">
+          <label>经手人</label>
+          <input type="text" name="staffId" th:field="*{staffId}" class="input-xlarge" disabled="disabled">
+          <!--<label>买过机型</label>
           <input type="text" name="buy" th:field="*{buy}" class="input-xlarge">
           <label>备注</label>
-          <input type="text" name="comment" th:field="*{comment}" class="input-xlarge">
+          <input type="text" name="comment" th:field="*{comment}" class="input-xlarge">-->
     
       </div>
       <div class="tab-pane fade" id="profile">

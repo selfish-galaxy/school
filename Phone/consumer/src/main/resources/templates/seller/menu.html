@@ -64,7 +64,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">品牌管理</h1>
+            <h1 class="page-title">menu管理</h1>
         </div>
 
         <div class="container-fluid">
@@ -81,26 +81,26 @@
       <thead>
         <tr>
  <!--         <th>品牌编号</th>-->
-          <th>品牌ID</th>
-          <th>品牌名称</th>
-          <th>品牌logo</th>
-          <th>品牌描述</th>
-          <th style="width: 36px;">操作</th>
+          <th>menuID</th>
+          <th>menu名称</th>
+          <th>menulogo</th>
+
+          <!--<th style="width: 36px;">操作</th>-->
         </tr>
       </thead>
       <tbody>
       
-      <tr th:each="b:${brands }">
-          <td th:text="${b.id }"></td>
+      <tr th:each="m:${menus }">
+          <td th:text="${m.id }"></td>
           <!--<td th:text="${b.bId }"></td>-->
-          <td th:text="${b.bName }"></td>
-          <td th:text="${b.bImg }"></td>
-          <td th:text="${b.introduction }"></td>
-          <td>
+          <td th:text="${m.urlName }"></td>
+          <td th:text="${m.url }"></td>
+
+          <!--<td>
               <a href="javascript:;" th:id="${b.id}" onclick="javascript:loadBrand(this)"><i class="icon-pencil"></i></a>
               <a href="#myModal" role="button" data-toggle="modal">
               <i class="icon-remove" th:id="${b.id }" onclick="copy(this)" ></i></a>
-          </td>
+          </td>-->
         </tr>
        
       </tbody>
