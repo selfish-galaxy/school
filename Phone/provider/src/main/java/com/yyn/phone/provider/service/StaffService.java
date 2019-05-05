@@ -18,4 +18,8 @@ public interface StaffService {
     Staff selectOneStaff(Integer id);
 
     void updateStaff(Staff staff);
+
+    Boolean staffLogin(String stName,String stPwd);
+
+    Integer getStaffLoginStatus(String stName,String stPwd);
 }

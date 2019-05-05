@@ -1,18 +1,19 @@
 package com.yyn.phone.provider.dao;
 
-import com.yyn.phone.provider.pojo.Staff;
+import com.yyn.phone.provider.pojo.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
-public interface StaffRepository extends JpaRepository<Staff,Integer>{
+public interface MenuRepository extends JpaRepository<Menu,Integer>{
 
 //    @Modifying
     @Transactional
-    @Query(value = "select * from staff where st_name=?1 and st_pwd=?2 ",nativeQuery=true)
-    Staff staffLogin(String stName,String stPwd);
+    @Query(value = "select * from menu where id=?1 ",nativeQuery=true)
+    Menu findAllById(Integer id);
 }

@@ -1,12 +1,9 @@
 package com.yyn.phone.consumer.service;
 
 import com.yyn.phone.provider.pojo.PageBean;
-import com.yyn.phone.provider.pojo.RestPage;
 import com.yyn.phone.provider.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;

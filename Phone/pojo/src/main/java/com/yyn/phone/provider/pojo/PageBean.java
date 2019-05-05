@@ -206,7 +206,7 @@ public class PageBean<T> implements Serializable{
             pageView.add("<font size=2>下一页</font>");
             pageView.add("<font size=2>尾页</font>");
         }
-        pageView.add("共<var>" + getTotalPage() + "</var>页 到第<input type='text' id='currentPage'  size='3' />页 <input type='button' id='skip' class='hand btn60x20' value='确定' onclick=\"javascript:window.location.href = '" + url + "?" + this.pageSize + "&currentPage=' + $('#currentPage').val() \"/>");
+        pageView.add("共<var>" + getTotalPage() + "</var>页 到第<input type='text' id='currentPage'  size='3' style='width: 18px;height: 12px; margin: 0 3px;'/>页 <input type='button' id='skip' class='hand btn60x20' value='确定' onclick=\"javascript:window.location.href = '" + url + "?" + this.pageSize + "&currentPage=' + $('#currentPage').val() \"/>");
     }
 
 

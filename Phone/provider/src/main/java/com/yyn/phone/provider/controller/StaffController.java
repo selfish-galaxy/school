@@ -44,4 +44,14 @@ public class StaffController {
     public PageBean<Staff> staffPage(Integer page, Integer size){
         return staffService.showAll(page, size);
     }
+
+    @RequestMapping("/staffLogin")
+    public Boolean staffLogin(String stName,String stPwd){
+        return staffService.staffLogin(stName,stPwd);
+    }
+
+    @RequestMapping("/getStaffLoginStatus")
+    public Integer getStaffLoginStatus(String stName,String stPwd){
+        return staffService.getStaffLoginStatus(stName,stPwd);
+    }
 }

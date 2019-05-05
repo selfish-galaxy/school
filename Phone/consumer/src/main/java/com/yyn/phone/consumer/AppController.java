@@ -1,13 +1,10 @@
 package com.yyn.phone.consumer;
 
-import com.github.pagehelper.PageHelper;
 import com.yyn.phone.consumer.service.*;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Properties;
 
 @RestController
 public class AppController {
@@ -41,6 +38,16 @@ public class AppController {
     @Bean
     SkuService skuService(){
         return new SkuService();
+    }
+
+    @Bean
+    OrderyService orderService(){
+        return new OrderyService();
+    }
+
+    @Bean
+    MenuService menuService(){
+        return new MenuService();
     }
 
 //    //配置mybatis的分页插件pageHelper

@@ -57,4 +57,19 @@ public class StaffServiceImpl implements StaffService {
     public void updateStaff(Staff staff) {
         staffRepository.save(staff);
     }
+
+    @Override
+    public Boolean staffLogin(String stName, String stPwd) {
+        Staff staff = staffRepository.staffLogin(stName, stPwd);
+        if (staff.getStName().equals(stName) && staff.getStPwd().equals(stPwd)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public Integer getStaffLoginStatus(String stName, String stPwd) {
+        return staffRepository.staffLogin(stName, stPwd).getStatus();
+    }
 }

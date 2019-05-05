@@ -42,4 +42,12 @@ public class StaffService {
         return result;
     }
 
+    public Boolean staffLogin(String stName,String stPwd){
+        return restTemplate.getForObject("http://service-provider/staffLogin?stName={1}&stPwd={2}",Boolean.class, stName, stPwd);
+    }
+
+    public Integer getStaffLoginStatus(String stName,String stPwd){
+        return restTemplate.getForObject("http://service-provider/getStaffLoginStatus?stName={1}&stPwd={2}",Integer.class, stName, stPwd);
+    }
+
 }

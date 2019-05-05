@@ -86,4 +86,22 @@ public class StaffController {
         model.addAttribute("staffs",staffPageBean);
         return "seller/staff";
     }
+
+    @RequestMapping("/toStaffLogin")
+    public String toStaffLogin(){
+        return "seller/login";
+    }
+
+    @RequestMapping("/staffLogin")
+    public String staffLogin(Model model,String stName,String stPwd){
+        Boolean flag = staffService.staffLogin(stName, stPwd);
+        Integer status = staffService.getStaffLoginStatus(stName, stPwd);
+        model.addAttribute("id",status);
+        if (flag == true){
+            return "seller/index";
+//            return "redirect:menuList";
+        } else {
+            return "seller/error";
+        }
+    }
 }

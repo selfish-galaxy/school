@@ -17,6 +17,8 @@ public class Staff {
 
     private String stName;
 
+    private String stPwd;
+
     private String stSex;
 
     private String dept;
@@ -29,7 +31,7 @@ public class Staff {
 
     private Float salary;
 
-    private String status;
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -45,6 +47,14 @@ public class Staff {
 
     public void setStName(String stName) {
         this.stName = stName;
+    }
+
+    public String getStPwd() {
+        return stPwd;
+    }
+
+    public void setStPwd(String stPwd) {
+        this.stPwd = stPwd;
     }
 
     public String getStSex() {
@@ -95,11 +105,11 @@ public class Staff {
         this.salary = salary;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }
