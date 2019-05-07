@@ -1,6 +1,7 @@
 package com.yyn.phone.provider.service.Impl;
 
 import com.yyn.phone.provider.dao.StaffRepository;
+import com.yyn.phone.provider.dao.StaffextRepository;
 import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Staff;
 import com.yyn.phone.provider.service.StaffService;
@@ -17,10 +18,12 @@ public class StaffServiceImpl implements StaffService {
 
     @Autowired
     private StaffRepository staffRepository;
+//    @Autowired
+//    private StaffextRepository staffextRepository;
 
     @Override
     public List<Staff> showAllStaffs() {
-        return null;
+        return staffRepository.findAll();
     }
 
     @Override
@@ -61,15 +64,34 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public Boolean staffLogin(String stName, String stPwd) {
         Staff staff = staffRepository.staffLogin(stName, stPwd);
-        if (staff.getStName().equals(stName) && staff.getStPwd().equals(stPwd)){
-            return true;
-        }else {
+//        if (stName.equals(staff.getStName()) && stPwd.equals(staff.getStPwd())){
+//            return true;
+//        }else {
+        if (staff == null){
             return false;
+        }else{
+            return true;
         }
+
     }
 
     @Override
     public Integer getStaffLoginStatus(String stName, String stPwd) {
         return staffRepository.staffLogin(stName, stPwd).getStatus();
+    }
+
+    @Override
+    public void addCount(Integer staffId) {
+        staffRepository.addCount(staffId);
+    }
+
+    @Override
+    public void minusCount(Integer staffId) {
+        staffRepository.minusCount(staffId);
+    }
+
+    @Override
+    public void updateStaffPassword(String stPwd, String stName) {
+        staffRepository.updateStaffPassword(stPwd, stName);
     }
 }

@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service("skuService")
@@ -64,5 +66,23 @@ public class SkuServiceImpl implements SkuService {
     public PageBean<Sku> selectByProId(Integer id,Integer page,Integer size) {
         PageRequest of = PageRequest.of(page - 1, size);
         return PageTools.makePage(page,size,skuRepository.findAllByProId(id,of));
+    }
+
+    @Override
+    public List findColorIdByProId(Integer proId) {
+        List colorIdByProId = skuRepository.findColorIdByProId(proId);
+        HashSet<Object> hashSet = new HashSet<>(colorIdByProId);
+        List<Object> list = new ArrayList<>(hashSet);
+        return list;
+    }
+
+    @Override
+    public void minusSkuAmount(Integer proId, String colorId, String sizeId) {
+        skuRepository.minusSkuAmount(proId, colorId, sizeId);
+    }
+
+    @Override
+    public void addSkuAmount(Integer proId, String colorId, String sizeId) {
+        skuRepository.addSkuAmount(proId, colorId, sizeId);
     }
 }

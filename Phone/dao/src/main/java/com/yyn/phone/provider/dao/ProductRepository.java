@@ -1,6 +1,9 @@
 package com.yyn.phone.provider.dao;
 
+import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -13,9 +16,9 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Integer>,JpaSpecificationExecutor<Product>{
 
-    @Modifying
+//    @Modifying
     @Transactional
     @Query(value = "select * from Product where bra_id=?1 and p_name like concat('%',?2,'%')",nativeQuery=true)
-    List<Product> findByBraIdAndPName(Integer braId,String pName);
+    Page<Product> findByBraIdAndPName(Integer braId, String pName, Pageable pageable);
 
 }

@@ -2,10 +2,7 @@ package com.yyn.phone.provider.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler","fieldHandler"})
@@ -17,13 +14,17 @@ public class Sku {
 
     private Integer proId;
 
-    private Integer colorId;
+    private String colorId;
 
-    private Integer sizeId;
+    private String sizeId;
 
     private Float price;
 
     private Integer amount;
+
+    private transient Color color;
+
+    private transient Size size;
 
     public Integer getSkuid() {
         return skuid;
@@ -41,19 +42,19 @@ public class Sku {
         this.proId = proId;
     }
 
-    public Integer getColorId() {
+    public String getColorId() {
         return colorId;
     }
 
-    public void setColorId(Integer colorId) {
+    public void setColorId(String colorId) {
         this.colorId = colorId;
     }
 
-    public Integer getSizeId() {
+    public String getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(Integer sizeId) {
+    public void setSizeId(String sizeId) {
         this.sizeId = sizeId;
     }
 
@@ -71,5 +72,23 @@ public class Sku {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    @Transient
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Transient
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
+        this.size = size;
     }
 }

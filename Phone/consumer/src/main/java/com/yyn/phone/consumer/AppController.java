@@ -50,6 +50,16 @@ public class AppController {
         return new MenuService();
     }
 
+    @Bean
+    ColorService colorService(){
+        return new ColorService();
+    }
+
+    @Bean
+    SizeService sizeService(){
+        return new SizeService();
+    }
+
 //    //配置mybatis的分页插件pageHelper
 //    @Bean
 //    public PageHelper pageHelper(){

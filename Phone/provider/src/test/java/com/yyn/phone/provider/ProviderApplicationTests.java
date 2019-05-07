@@ -1,6 +1,7 @@
 package com.yyn.phone.provider;
 
 import com.yyn.phone.provider.dao.RoleRepository;
+import com.yyn.phone.provider.dao.SkuRepository;
 import com.yyn.phone.provider.dao.UserRepository;
 import com.yyn.phone.provider.pojo.*;
 import com.yyn.phone.provider.service.MenuService;
@@ -15,6 +16,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -31,6 +34,8 @@ public class ProviderApplicationTests {
 	private MenuService menuService;
 	@Resource
 	private RoleRepository roleRepository;
+	@Resource
+	private SkuRepository skuRepository;
 
 
 	@Test
@@ -58,6 +63,15 @@ public class ProviderApplicationTests {
 //		for (Integer m:roleMenuByRoleId){
 //			System.out.println(m);
 //		}
+	}
+
+	@Test
+	public void asd(){
+		List colorIdByProId = skuRepository.findColorIdByProId(10001);
+		HashSet hashSet = new HashSet<>(colorIdByProId);
+		List list = new ArrayList<>(hashSet);
+		System.out.println(hashSet);
+		System.out.println(list);
 	}
 
 }

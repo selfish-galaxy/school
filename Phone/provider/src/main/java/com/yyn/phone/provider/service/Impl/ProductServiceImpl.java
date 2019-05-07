@@ -5,6 +5,7 @@ import com.yyn.phone.provider.dao.ProductRepository;
 import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Product;
 import com.yyn.phone.provider.service.ProductService;
+import com.yyn.phone.provider.tools.PageTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -62,7 +63,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> selectProducts(Integer braId,String pName) {
-        return productRepository.findByBraIdAndPName(braId,pName);
+    public PageBean<Product> selectProducts(Integer braId,String pName,int page,int size) {
+        PageRequest of = PageRequest.of(page - 1,size);
+        return PageTools.makePage(page,size,productRepository.findByBraIdAndPName(braId,pName,of));
     }
 }

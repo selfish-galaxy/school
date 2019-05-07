@@ -99,13 +99,21 @@ public class ProductController {
     查询商品
      */
     @RequestMapping("/selectProducts")
-    public String selectProducts(Model model,Integer braId,String pName){
+    public String selectProducts(Model model,Integer braId,String pName,Integer currentPage, Integer size){
+        if(currentPage == null){
+            currentPage = 1;
+        }
+        if(size == null){
+            size = 10;
+        }
         Product product = new Product();
         product.setBraId(braId);
         product.setpName(pName);
         model.addAttribute("brands", brandService.showAllBrands());
         model.addAttribute("product",product);
-        model.addAttribute("products",productService.selectProducts(braId, pName));
+        PageBean<Product> productPageBean = productService.selectProducts(braId, pName, currentPage, size);
+        productPageBean.pageView("selectProducts");
+        model.addAttribute("products",productPageBean);
         return "/seller/product";
     }
 

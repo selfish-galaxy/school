@@ -40,7 +40,7 @@ public class ProductService {
                 product.getpImg(),product.getPrices(),product.getCreateTime(),product.getDescription());
     }
 
-    public List<Product> selectProducts(Integer braId, String pName){
-        return restTemplate.getForObject("http://service-provider/selectProducts?braId={1}&pName={2}",List.class,braId,pName);
+    public PageBean<Product> selectProducts(Integer braId, String pName,int page,int size){
+        return restTemplate.getForObject("http://service-provider/selectProducts?braId={1}&pName={2}&page={3}&size={4}",PageBean.class,braId,pName,page,size);
     }
 }

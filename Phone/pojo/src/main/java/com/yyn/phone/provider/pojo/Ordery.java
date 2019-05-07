@@ -21,11 +21,13 @@ public class Ordery implements Serializable {
 
     private Integer userId;
 
+//    private Integer braId;
+
     private Integer proId;
 
-    private Integer colorId;
+    private String colorId;
 
-    private Integer sizeId;
+    private String sizeId;
 
     private Float money;
 
@@ -59,6 +61,14 @@ public class Ordery implements Serializable {
         this.userId = userId;
     }
 
+//    public Integer getBraId() {
+//        return braId;
+//    }
+//
+//    public void setBraId(Integer braId) {
+//        this.braId = braId;
+//    }
+
     public Integer getProId() {
         return proId;
     }
@@ -67,19 +77,19 @@ public class Ordery implements Serializable {
         this.proId = proId;
     }
 
-    public Integer getColorId() {
+    public String getColorId() {
         return colorId;
     }
 
-    public void setColorId(Integer colorId) {
+    public void setColorId(String colorId) {
         this.colorId = colorId;
     }
 
-    public Integer getSizeId() {
+    public String getSizeId() {
         return sizeId;
     }
 
-    public void setSizeId(Integer sizeId) {
+    public void setSizeId(String sizeId) {
         this.sizeId = sizeId;
     }
 

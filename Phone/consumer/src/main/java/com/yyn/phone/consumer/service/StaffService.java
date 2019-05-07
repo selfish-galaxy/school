@@ -19,8 +19,8 @@ public class StaffService {
     }
 
     public void addStaff(Staff staff){
-        restTemplate.getForObject("http://service-provider/addStaff?stName={1}&stSex={2}&dept={3}&count={4}&basic={5}&bonus={6}&salary={7}&status={8}",
-                Void.class, staff.getStName(),staff.getStSex(),staff.getDept(),staff.getCount(),staff.getBasic(),staff.getBonus(),staff.getSalary(),staff.getStatus());
+        restTemplate.getForObject("http://service-provider/addStaff?stName={1}&stPwd={2}&stSex={3}&dept={4}&count={5}&basic={6}&bonus={7}&salary={8}&status={9}",
+                Void.class, staff.getStName(),"123456",staff.getStSex(),staff.getDept(),0,staff.getBasic(),0,staff.getSalary(),staff.getStatus());
     }
 
     public void delStaff(Integer id){
@@ -34,7 +34,7 @@ public class StaffService {
 
     public void updateStaff(Staff staff){
         restTemplate.getForObject("http://service-provider/updateStaff?id={1}&stName={2}&stSex={3}&dept={4}&count={5}&basic={6}&bonus={7}&salary={8}&status={9}",
-                Void.class, staff.getId(),staff.getStName(),staff.getStSex(),staff.getDept(),staff.getCount(),staff.getBasic(),staff.getBonus(),staff.getSalary(),staff.getStatus());
+                Void.class, staff.getId(),staff.getStName(),staff.getStSex(),staff.getDept(),staff.getCount(),staff.getBasic(),staff.getCount()*50,staff.getSalary(),staff.getStatus());
     }
 
     public PageBean<Staff> staffPage(Integer page, Integer size){
@@ -48,6 +48,18 @@ public class StaffService {
 
     public Integer getStaffLoginStatus(String stName,String stPwd){
         return restTemplate.getForObject("http://service-provider/getStaffLoginStatus?stName={1}&stPwd={2}",Integer.class, stName, stPwd);
+    }
+
+    public void addCount(Integer staffId) {
+        restTemplate.getForObject("http://service-provider/addCount?staffId={1}",Staff.class,staffId);
+    }
+
+    public void minusCount(Integer staffId) {
+        restTemplate.getForObject("http://service-provider/minusCount?staffId={1}",Staff.class,staffId);
+    }
+
+    public void updateStaffPassword(String stPwd,String stName){
+        restTemplate.getForObject("http://service-provider/updatePassword?stPwd={1}&stName={2}",Integer.class, stPwd, stName);
     }
 
 }

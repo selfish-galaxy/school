@@ -22,4 +22,10 @@ public interface StaffService {
     Boolean staffLogin(String stName,String stPwd);
 
     Integer getStaffLoginStatus(String stName,String stPwd);
+
+    void addCount(Integer staffId);
+
+    void minusCount(Integer staffId);
+
+    void updateStaffPassword(String stPwd,String stName);
 }

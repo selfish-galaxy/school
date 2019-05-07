@@ -1,14 +1,15 @@
 package com.yyn.phone.consumer.controller;
 
 import com.yyn.phone.consumer.service.StaffService;
-import com.yyn.phone.consumer.service.UserService;
 import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Staff;
-import com.yyn.phone.provider.pojo.User;
+import com.yyn.phone.consumer.WebSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class StaffController {
@@ -38,6 +39,7 @@ public class StaffController {
      */
     @RequestMapping("addStaff")
     public String addStaff(Staff staff){
+        staff.setSalary(staff.getBasic());
         staffService.addStaff(staff);
         return "redirect:staffList";
     }
@@ -65,6 +67,7 @@ public class StaffController {
      */
     @RequestMapping("/updateStaff")
     public String updateStaff(Staff staff){
+        staff.setSalary(staff.getBasic()+staff.getBonus());
         staffService.updateStaff(staff);
         return "redirect:staffList";
     }
@@ -93,15 +96,41 @@ public class StaffController {
     }
 
     @RequestMapping("/staffLogin")
-    public String staffLogin(Model model,String stName,String stPwd){
+    public String staffLogin(Model model, String stName, String stPwd, Integer id, HttpSession session){
         Boolean flag = staffService.staffLogin(stName, stPwd);
-        Integer status = staffService.getStaffLoginStatus(stName, stPwd);
-        model.addAttribute("id",status);
+//        model.addAttribute("id",status);
         if (flag == true){
-            return "seller/index";
-//            return "redirect:menuList";
+            // 设置session
+            session.setAttribute(WebSecurityConfig.SESSION_KEY, stName);
+//            session.setAttribute("sessionUser",session);
+            Integer status = staffService.getStaffLoginStatus(stName, stPwd);
+//            return "seller/index";
+            return "redirect:menuList?id="+status;
         } else {
             return "seller/error";
         }
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        // 移除session
+        session.removeAttribute(WebSecurityConfig.SESSION_KEY);
+        session.removeAttribute("menus");
+        return "redirect:/";
+    }
+
+    @RequestMapping("/toUpdatePassword")
+    public String toUpdatePassword(HttpSession session){
+//        Object attribute = session.getAttribute(WebSecurityConfig.SESSION_KEY);
+//        String s = attribute.toString();
+        return "seller/loginUpdate";
+    }
+
+    @RequestMapping("/updatePassword")
+    public String updatePassword(HttpSession session, String stPwd){
+        Object attribute = session.getAttribute(WebSecurityConfig.SESSION_KEY);
+        String s = attribute.toString();
+        staffService.updateStaffPassword(stPwd,s);
+        return "redirect:toStaffLogin";
     }
 }

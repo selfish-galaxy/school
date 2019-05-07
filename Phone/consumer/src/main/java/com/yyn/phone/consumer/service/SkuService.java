@@ -26,11 +26,11 @@ public class SkuService {
 
     public void delSku(Integer id){
 //        restTemplate.getForObject("http://service-provider/delUser?id={1}",Void.class,id);
-        restTemplate.delete("http://service-provider/delSku?skuid={1}",id);
+        restTemplate.delete("http://service-provider/delSku?id={1}",id);
     }
 
     public Sku selectOneSku(Integer id){
-        return restTemplate.getForObject("http://service-provider/selectOneSku?skuid={1}",Sku.class,id);
+        return restTemplate.getForObject("http://service-provider/selectOneSku?id={1}",Sku.class,id);
     }
 
     public void updateSku(Sku sku){
@@ -45,6 +45,18 @@ public class SkuService {
 
     public PageBean<Sku> selectSkuByProId(Integer id,Integer page, Integer size){
         return restTemplate.getForObject("http://service-provider/selectSku?id={1}&page={2}&size={3}",PageBean.class,id,page,size);
+    }
+
+    public List findColorIdByProId(Integer proId){
+        return  restTemplate.getForObject("http://service-provider/findColorList?proId={1}",List.class,proId);
+    }
+
+    public void minusSkuAmount(Integer proId,String colorId,String sizeId){
+        restTemplate.getForObject("http://service-provider/minusSkuAmount?proId={1}&colorId={2}&sizeId={3}",List.class,proId,colorId,sizeId);
+    }
+
+    public void addSkuAmount(Integer proId,String colorId,String sizeId){
+        restTemplate.getForObject("http://service-provider/addSkuAmount?proId={1}&colorId={2}&sizeId={3}",List.class,proId,colorId,sizeId);
     }
 
 }

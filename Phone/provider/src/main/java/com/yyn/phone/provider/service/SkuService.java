@@ -20,4 +20,10 @@ public interface SkuService {
     void updateSku(Sku sku);
 
     PageBean<Sku> selectByProId(Integer proId,Integer page, Integer size);
+
+    List findColorIdByProId(Integer proId);
+
+    void minusSkuAmount(Integer proId,String colorId,String sizeId);
+
+    void addSkuAmount(Integer proId,String colorId,String sizeId);
 }

@@ -1,5 +1,6 @@
 package com.yyn.phone.provider.controller;
 
+import com.yyn.phone.provider.pojo.Color;
 import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Sku;
 import com.yyn.phone.provider.service.SkuService;
@@ -48,5 +49,20 @@ public class SkuController {
     @RequestMapping("/selectSku")
     public PageBean<Sku> selectByProId(Integer id,Integer page, Integer size){
         return skuService.selectByProId(id, page, size);
+    }
+
+    @RequestMapping("/findColorList")
+    public List<Color> findColorIdByProId(Integer proId){
+        return skuService.findColorIdByProId(proId);
+    }
+
+    @RequestMapping("/minusSkuAmount")
+    public void minusSkuAmount(Integer proId,String colorId,String sizeId){
+        skuService.minusSkuAmount(proId, colorId, sizeId);
+    }
+
+    @RequestMapping("/addSkuAmount")
+    public void addSkuAmount(Integer proId, String colorId, String sizeId) {
+        skuService.addSkuAmount(proId, colorId, sizeId);
     }
 }

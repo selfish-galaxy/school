@@ -1,5 +1,7 @@
 package com.yyn.phone.consumer.controller;
 
+import com.yyn.phone.consumer.service.ColorService;
+import com.yyn.phone.consumer.service.SizeService;
 import com.yyn.phone.consumer.service.SkuService;
 import com.yyn.phone.provider.pojo.PageBean;
 import com.yyn.phone.provider.pojo.Sku;
@@ -8,11 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 @Controller
 public class SkuController {
 
     @Autowired
     private SkuService skuService;
+    @Autowired
+    private ColorService colorService;
+    @Autowired
+    private SizeService sizeService;
 
     /*
     查询所有，显示列表
@@ -27,7 +36,9 @@ public class SkuController {
     去添加页
      */
     @RequestMapping("/toSkuAdd")
-    public String toSkuAdd(){
+    public String toSkuAdd(Model model){
+        model.addAttribute("clist",colorService.findAllColors());
+        model.addAttribute("slist",sizeService.findAllSizes());
         return "seller/skuAdd";
     }
 
@@ -39,6 +50,13 @@ public class SkuController {
         skuService.addSku(sku);
         return "redirect:skuList";
     }
+
+//    @RequestMapping("findColor")
+//    public String findColorIdByProId(Integer proId,Model model){
+//        List colorIdByProId = skuService.findColorIdByProId(proId);
+//        model.addAttribute("clist",colorIdByProId);
+//        return "seller/skuAdd";
+//    }
 
     /*
    删除(真删除)
@@ -96,6 +114,6 @@ public class SkuController {
         PageBean<Sku> skuPageBean = skuService.selectSkuByProId(id, currentPage, size);
         skuPageBean.pageView("selectSkuList");
         model.addAttribute("skus",skuPageBean);
-        return "seller/sku";
+        return "seller/skuPro";
     }
 }

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>库存管理页</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+
+    <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+
+    <!-- Demo page code -->
+
+    <style type="text/css">
+        #line-chart {
+            height:300px;
+            width:800px;
+            margin: 0px auto;
+            margin-top: 1em;
+        }
+        .brand { font-family: georgia, serif; }
+        .brand .first {
+            color: #ccc;
+            font-style: italic;
+        }
+        .brand .second {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .myFontStyle{
+            color: red;
+        }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  
+  <script type="text/javascript">
+  function toAddSku(){
+	  window.location.href="toAddSku";
+  }
+  </script>
+  </head>
+
+  
+  <body class=""> 
+  <!--<![endif]-->
+    
+<div th:insert="~{seller/index::header}"></div>
+    
+    <div class="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">库存管理</h1>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                
+               
+ <div class="btn-toolbar">
+    <button class="btn btn-primary" onclick="javascript:window.location.href='toSkuAdd' "><i class="icon-plus"></i>添加</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table" style="text-align: center;">
+      <thead>
+        <tr>
+          <th>库存编号</th>
+          <th>商品id</th>
+          <th>颜色id</th>
+          <th>规格id</th>
+          <th>价格</th>
+          <th>库存数量</th>
+
+          <th style="width: 36px;">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+      <tr th:each="s:${skus.items }">
+      <!--<tr th:each="s:${skus }">-->
+          <td th:text="${s.skuid }"></td>
+          <td th:text="${s.proId }"></td>
+          <td th:text="${s.colorId }"></td>
+          <td th:text="${s.sizeId }"></td>
+          <td th:text="${s.price }"></td>
+          <!--<td th:text="${s.amount }"></td>-->
+          <td th:classappend="${s.amount le 10} ? 'myFontStyle' : ''" th:text="${s.amount }"></td>
+
+          <td>
+              <a href="javascript:;" th:id="${s.skuid}" onclick="javascript:loadSku(this)"><i class="icon-pencil"></i></a>
+              <a href="#myModal1" role="button" data-toggle="modal">
+              <i class="icon-remove" th:id="${s.skuid }" onclick="copy(this)" ></i></a>
+          </td>
+        </tr>
+       
+      </tbody>
+    </table>
+
+</div>
+
+<div class="pagination">
+                    <!--  class="pagination" -->
+
+                    <!--<span th:each="p:${page.pageView }">-->
+  <span th:each="s:${skus.pageView }">
+		<span class="page" th:utext="${s }"></span>
+    </span>
+
+ </div>
+
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">删除该库存</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除么？</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true" >取消</button>
+        <button class="btn btn-danger" data-dismiss="modal" onclick="del()">删除</button>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+        function copy(obj){
+            // debugger
+        	id = $(obj).attr("id");
+		}
+		function del(){
+			window.location.href="delSku?id="+id;
+		}
+		function loadSku(obj){
+	    	window.location.href="toUpdateSku?id="+$(obj).attr("id");
+	    }
+    </script>
+    
+  </body>
+</html>
+
+

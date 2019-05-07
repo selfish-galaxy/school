@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @RequestMapping("/selectProducts")
-    public List<Product> selectProducts(Integer braId,String pName){
-        return productService.selectProducts(braId, pName);
+    public PageBean<Product> selectProducts(Integer braId,String pName,int page,int size){
+        return productService.selectProducts(braId, pName,page,size);
     }
 }

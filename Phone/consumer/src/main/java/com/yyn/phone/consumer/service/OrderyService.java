@@ -39,7 +39,7 @@ public class OrderyService {
     public void updateOrdery(Ordery ordery){
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        String time = sdf.format(ordery.getTime());
-        restTemplate.getForObject("http://service-provider/updateOrdery?id={1}&userId={2}&proId={3}&colorId={4}&sizeId={5}&money={6}&staffId={7}&orderTime={7}&orderCondition={8}",
+        restTemplate.getForObject("http://service-provider/updateOrdery?id={1}&userId={2}&proId={3}&colorId={4}&sizeId={5}&money={6}&staffId={7}&orderTime={8}&orderCondition={9}",
                 Void.class, ordery.getId(),ordery.getUserId(),ordery.getProId(),ordery.getColorId(),ordery.getSizeId(),ordery.getMoney(),ordery.getStaffId(),ordery.getOrderTime(),"更正出单");
     }
 

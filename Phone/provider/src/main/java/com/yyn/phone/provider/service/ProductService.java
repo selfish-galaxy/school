@@ -17,5 +17,5 @@ public interface ProductService {
 
     void updateProduct(Product product);
 
-    List<Product> selectProducts(Integer braId,String pName);
+    PageBean<Product> selectProducts(Integer braId,String pName,int page,int size);
 }
