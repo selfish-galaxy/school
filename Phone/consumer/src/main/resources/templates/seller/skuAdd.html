@@ -83,11 +83,19 @@
 
 
         <label>商品id</label>
-        <input type="text" name="proId" class="input-xlarge">
+        <input type="text" name="proId" id="proId" class="input-xlarge">
         <label>颜色id</label>
-        <input type="text" name="colorId" class="input-xlarge">
+          <select name="colorId" id="sss">
+              <option value="">请选择颜色</option>
+              <option th:each="c:${clist }" th:value="${c.cName }"><span th:text="${c.cName}"></span></option>
+          </select>
+        <!--<input type="text" name="colorId" class="input-xlarge">-->
         <label>规格id</label>
-        <input type="text" name="sizeId" class="input-xlarge">
+          <select name="sizeId" id="sss">
+              <option value="">请选择规格</option>
+              <option th:each="s:${slist }" th:value="${s.sName }"><span th:text="${s.sName}"></span></option>
+          </select>
+        <!--<input type="text" name="sizeId" class="input-xlarge">-->
         <label>价格</label>
         <input type="text" name="price" class="input-xlarge">
         <label>库存数量</label>
@@ -120,7 +128,45 @@
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
+
+            //proId
+            $('#proId111').on('input propertyChange',_debounce(getDataByProId, 500));
         });
+
+        function getDataByProId() {
+            //在这里写ajax
+            $.ajax({
+                type: "POST",
+                url: "findColor",
+                data: {
+                    proId : proId
+                },
+                dataType: "text",
+                cache: false,
+                async : true,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                success: function(value){
+                    $("#sss").val(value);
+                },
+                error: function() {
+                }
+            });
+            console.log($('#proId').val())
+        }
+
+        var _debounce = function(func, wait) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() {
+                    timeout = null;
+                    func.apply(context, args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
     </script>
     
   </body>

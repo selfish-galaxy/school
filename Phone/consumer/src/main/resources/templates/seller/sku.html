@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
 
     <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+
 
     <!-- Demo page code -->
 
@@ -33,6 +33,10 @@
         .brand .second {
             color: #fff;
             font-weight: bold;
+        }
+
+        .myFontStyle{
+            color: red;
         }
     </style>
 
@@ -100,11 +104,12 @@
           <td th:text="${s.colorId }"></td>
           <td th:text="${s.sizeId }"></td>
           <td th:text="${s.price }"></td>
-          <td th:text="${s.amount }"></td>
+          <!--<td th:text="${s.amount }"></td>-->
+          <td th:classappend="${s.amount le 10} ? 'myFontStyle' : ''" th:text="${s.amount }"></td>
 
           <td>
               <a href="javascript:;" th:id="${s.skuid}" onclick="javascript:loadSku(this)"><i class="icon-pencil"></i></a>
-              <a href="#myModal" role="button" data-toggle="modal">
+              <a href="#myModal1" role="button" data-toggle="modal">
               <i class="icon-remove" th:id="${s.skuid }" onclick="copy(this)" ></i></a>
           </td>
         </tr>
@@ -150,6 +155,7 @@
             $('.demo-cancel-click').click(function(){return false;});
         });
         function copy(obj){
+            // debugger
         	id = $(obj).attr("id");
 		}
 		function del(){

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
 
     <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+      <script src="lib/bootstrap/js/bootstrap.js"></script>
 
     <!-- Demo page code -->
 
@@ -61,15 +62,22 @@
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-user"></i>
                             <!--<span th:text="${session.seller.susername}"></span>-->
+                            <span th:text="${session.user}"></span>
                             <i class="icon-caret-down"></i>
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">My Account</a></li>
+                            <li><a tabindex="-1" href="/">My Account</a></li>
                             <li class="divider"></li>
-                            <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
+                            <li><a tabindex="-1" class="visible-phone" href="#">Setttttings</a></li>
+                            <span th:if="${session.user}">
+                                <li class="divider visible-phone"></li>
+                                <li><a tabindex="-1" href="logout">Logout</a></li>
+                            </span>
+                            <span th:if="${session.user} eq null">
                             <li class="divider visible-phone"></li>
-                            <li><a tabindex="-1" href="toStaffLogin">Logout</a></li>
+                            <li><a tabindex="-1" href="toStaffLogin">Login</a></li>
+                            </span>
                         </ul>
                     </li>
                     
@@ -89,8 +97,8 @@
     <div class="sidebar-nav">
         <!--<a href="/menuList?id="+id>gusadg</a>-->
         <!--<a href="" onclick="showMenu(id)">rtyuio</a>-->
-        <input type="hidden" name="id" th:value="${id}" onclick="copy(this)" >
-        <tr th:each="m:${menus }">
+        <!--<input type="hidden" name="id" th:value="${id}" onclick="copy(this)" >-->
+        <tr th:each="m:${session.menus }">
         <a th:href="${m.url }" class="nav-header" ><i class="icon-comment"></i><td th:text="${m.urlName }"></td></a>
         </tr>
     </div>
@@ -108,7 +116,7 @@
     
 
 
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
+
     <script type="text/javascript">
         $("[rel=tooltip]").tooltip();
         $(function() {

@@ -94,10 +94,13 @@
           <td th:text="${b.id }"></td>
           <!--<td th:text="${b.bId }"></td>-->
           <td th:text="${b.bName }"></td>
-          <td th:text="${b.bImg }"></td>
+          <!--<td th:text="${b.bImg }"></td>-->
+
+          <td><img th:src="@{${b.bImg }}" width="50px" height="50px"></td>
+
           <td th:text="${b.introduction }"></td>
           <td>
-              <a href="javascript:;" th:id="${b.id}" onclick="javascript:loadBrand(this)"><i class="icon-pencil"></i></a>
+              <!--<a href="javascript:;" th:id="${b.id}" onclick="javascript:loadBrand(this)"><i class="icon-pencil"></i></a>-->
               <a href="#myModal" role="button" data-toggle="modal">
               <i class="icon-remove" th:id="${b.id }" onclick="copy(this)" ></i></a>
           </td>

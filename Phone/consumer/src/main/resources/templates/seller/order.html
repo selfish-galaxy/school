@@ -113,7 +113,7 @@
           <td th:if="${o.orderCondition} ne '售后退货'">
               <a href="javascript:;" th:id="${o.id}" onclick="javascript:loadOrdery(this)"><i class="icon-pencil"></i></a>
               <a href="#myModal" role="button" data-toggle="modal">
-              <i class="icon-remove" th:id="${o.id }" onclick="copy(this)" ></i></a>
+              <i class="icon-remove" th:id="${o.id }" th:staffId="${o.staffId}" th:proId="${o.proId }" th:colorId="${o.colorId}" th:sizeId="${o.sizeId}" onclick="copy(this)" ></i></a>
           </td>
           <td th:if="${o.orderCondition} eq '售后退货'">
               &nbsp;&nbsp;&nbsp;&nbsp;
@@ -160,6 +160,10 @@
     });
     function copy(obj){
     	id = $(obj).attr("id");
+    	staffId = $(obj).attr("staffId");
+        proId = $(obj).attr("proId");
+        colorId = $(obj).attr("colorId");
+        sizeId = $(obj).attr("sizeId");
     }
     function deleteorder(obj){
     	window.location.href="deleteorder?oid="+oid;
@@ -175,7 +179,7 @@
         window.location.href="toUpdateOrdery?id="+$(obj).attr("id");
     }
     function cancelOrdery(){
-        window.location.href="cancelOrdery?id="+id;
+        window.location.href="cancelOrdery?id="+id+"&staffId="+staffId+"&proId="+proId+"&colorId="+colorId+"&sizeId="+sizeId;
     }
     </script>
     

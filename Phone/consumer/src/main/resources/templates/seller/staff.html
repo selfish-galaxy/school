@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
 
     <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
 
@@ -106,7 +105,7 @@
           <td th:text="${s.salary }"></td>
           <td th:text="${s.status }"></td>
           <td>
-              <a href="javascript:;" th:id="${s.id}" onclick="javascript:loadStaff(this)"><i class="icon-pencil"></i></a>
+              <!--<a href="javascript:;" th:id="${s.id}" onclick="javascript:loadStaff(this)"><i class="icon-pencil"></i></a>-->
               <a href="#myModal" role="button" data-toggle="modal">
               <i class="icon-remove" th:id="${s.id }" onclick="copy(this)" ></i></a>
           </td>

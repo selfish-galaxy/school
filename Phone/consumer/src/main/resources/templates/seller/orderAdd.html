@@ -92,16 +92,28 @@
         <br>
 
         <label>购买型号</label>
-        <input type="text" name="proId" value="" class="input-xlarge">
+        <input type="text" name="proId" value="" class="input-xlarge" id="table_refresh" th:fragment="table_refresh">
         <label>颜色</label>
-        <input type="text" name="colorId" value="" class="input-xlarge">
+          <select name="colorId" id="sss">
+              <option value="">请选择颜色</option>
+              <option th:each="c:${clist }" th:value="${c.cName }"><span th:text="${c.cName}"></span></option>
+          </select>
+        <!--<input type="text" name="colorId" value="" class="input-xlarge" onclick="localRefresh()">-->
         <label>版本</label>
-        <input type="text" name="sizeId" value="" class="input-xlarge">
+          <select name="sizeId" id="sss">
+              <option value="">请选择规格</option>
+              <option th:each="s:${slist }" th:value="${s.sName }"><span th:text="${s.sName}"></span></option>
+          </select>
+        <!--<input type="text" name="sizeId" value="" class="input-xlarge">-->
 
         <label>实收金额</label>
         <input type="text" name="money" value="" class="input-xlarge">
-        <label>经手人</label>
-        <input type="text" name="staffId" value="" class="input-xlarge">
+        <label>经手人<span style="color: red">（请慎重，一旦选择将无法更改）</span></label>
+        <!--<input type="text" name="staffId" value="" class="input-xlarge">-->
+          <select name="staffId">
+              <option value="">请选择</option>
+              <option th:each="s:${staffs }" th:value="${s.id}"><span th:text="${s.stName}"></span></option>
+          </select>
           <!--<label>时间</label>
           <input type="text" name="time" value="" class="input-xlarge">-->
         
@@ -145,6 +157,32 @@
         		
     		}, 'json');
         }
+        function freshTable(url, beginTime, endTime, selectType, node, page){
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {beginTime: beginTime,
+                    endTime: endTime,
+                    selectType: selectType,
+                    node: node,
+                    page: page},
+                dataType: "html",
+                cache: false,
+                async : true,
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                success: function(value){
+                    $("#show").html(value);
+                },
+                error: function() {
+                }
+            });
+        }
+
+        function localRefresh() {
+            // 装载局部刷新返回的页面
+            $('#table_refresh').load("/colorList");
+        }
+
     </script>
     
   </body>

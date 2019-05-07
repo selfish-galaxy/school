@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>登录页</title>
+    <title>修改密码页</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -77,13 +77,13 @@
         <div class="block">
             <p class="block-heading">登录</p>
             <div class="block-body">
-                <form action="staffLogin" method="post">
+                <form action="updatePassword" method="post">
                     <label>用户名</label>
-                    <input type="text" name="stName" class="span12" th:value="${stName}">
-                    <label>密码</label>
+                    <input type="text" name="stName" class="span12" th:value="${session.user}">
+                    <label>新密码</label>
                     <input type="password" name="stPwd" class="span12" th:value="${stPwd}">
-                    <input type="submit" class="btn btn-primary pull-right" value="登录">
-                    <label class="remember-me"><input type="checkbox" name="remember" value="1"> 请记住我</label>
+                    <input type="submit" class="btn btn-primary pull-right" value="修改">
+                    <!--<label class="remember-me"><input type="checkbox" name="remember" value="1"> 请记住我</label>-->
                     <div class="clearfix"></div>
                 </form>
             </div>
