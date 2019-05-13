@@ -30,7 +30,7 @@ public class Product {
     private String prices;
 
     private Date createTime;//上市时间
-    private String createTimeStr;//上市时间
+//    private String createTimeStr;//上市时间
 
     private String description;
 
@@ -114,11 +114,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getCreateTimeStr() {
-        return createTimeStr;
-    }
-
-    public void setCreateTimeStr(String createTimeStr) {
-        this.createTimeStr = createTimeStr;
-    }
+//    public String getCreateTimeStr() {
+//        return createTimeStr;
+//    }
+//
+//    public void setCreateTimeStr(String createTimeStr) {
+//        this.createTimeStr = createTimeStr;
+//    }
 }
