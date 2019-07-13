@@ -19,7 +19,9 @@ public class Ordery implements Serializable {
 
 //    private String orderId;
 
-    private Integer userId;
+//    private Integer userId;
+
+    private String userId;
 
 //    private Integer braId;
 
@@ -53,15 +55,23 @@ public class Ordery implements Serializable {
 //        this.orderId = orderId;
 //    }
 
-    public Integer getUserId() {
+//    public Integer getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(Integer userId) {
+//        this.userId = userId;
+//    }
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-//    public Integer getBraId() {
+    //    public Integer getBraId() {
 //        return braId;
 //    }
 //
