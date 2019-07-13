@@ -82,7 +82,7 @@
           <!--<input type="hidden" name="id" th:field="*{id}">-->
 
         <label>商品ID</label>
-        <input type="text" name="id" th:field="*{id}" class="input-xlarge" disabled="disabled">
+        <input type="text" name="id" th:field="*{id}" class="input-xlarge" readonly>
         <label>商品名称</label>
         <input type="text" name="pName" th:field="*{pName}" class="input-xlarge">
 
@@ -92,14 +92,14 @@
 			<option th:each="b:${brands }" th:value="${b.id}" ><span th:text="${b.bName}"></span></option>
 		</select>
 
-        <label>颜色</label>
+        <!--<label>颜色</label>
         <input type="text" name="colorId" th:field="*{colorId}" class="input-xlarge">
         <label>版本</label>
-        <input type="text" name="sizeId" th:field="*{sizeId}" class="input-xlarge">
+        <input type="text" name="sizeId" th:field="*{sizeId}" class="input-xlarge">-->
 
-          <label>图片</label>
-          <input type="hidden" id="pImg" name="pImg" th:field="*{pImg}">
-          <input type="file" name="file"/>
+          <!--<label>图片</label>-->
+          <!--<input type="hidden" id="pImg" name="pImg" th:field="*{pImg}">-->
+          <!--<input type="file" name="file"/>-->
 
         <label>价格</label>
         <input type="text" name="prices" th:field="*{prices}" class="input-xlarge">

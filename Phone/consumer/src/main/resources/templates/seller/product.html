@@ -96,7 +96,7 @@
           <th>所属品牌</th>
           <!--<th>颜色</th>
           <th>版本</th>-->
-          <th>相关图片</th>
+          <!--<th>相关图片</th>-->
           <th>价格</th>
           <th>上市时间</th>
           <th>商品描述</th>
@@ -113,7 +113,7 @@
           <td th:text="${p.braId }"></td>
           <!--<td th:text="${p.colorId }"></td>
           <td th:text="${p.sizeId }"></td>-->
-          <td><img th:src="@{${p.pImg }}" width="50px" height="50px"></td>
+          <!--<td><img th:src="@{${p.pImg }}" width="50px" height="50px"></td>-->
           <td th:text="${p.prices }"></td>
           <td th:text="${#strings.substring(p.createTime,0,10) }"></td>
           <td th:text="${p.description }"></td>
